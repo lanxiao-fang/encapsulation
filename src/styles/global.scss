@@ -1,0 +1,9 @@
+@import './_size';
+@import './_color';
+
+body {
+  font-family: $font-family-regular;
+  font-size: 14px;
+  line-height: 1.5;
+  color: $main-color;
+}
