@@ -3,7 +3,7 @@
  * @Author: xiaofang lan
  * @Date: 2021-06-16 16:31:22
  * @LastEditors: xiaofang lan
- * @LastEditTime: 2021-06-17 14:57:11
+ * @LastEditTime: 2021-06-18 15:12:07
  */
 
 let _this = null
@@ -18,18 +18,21 @@ const tableHeader = [
     label: '用户名',
     prop: 'content',
     align: 'center',
-    sortable: true
+    sortable: true,
+    width: 200
   },
   {
     label: '性别',
     prop: 'gender',
     align: 'center',
-    sortable: true
+    sortable: true,
+    width: 100
   },
   {
     label: '公司名称',
     prop: 'title',
-    align: 'center'
+    align: 'center',
+    width: 300
   },
   {
     label: '办公邮箱',
@@ -40,51 +43,22 @@ const tableHeader = [
   {
     label: '注册时间',
     prop: 'displayTime',
-    align: 'center'
+    align: 'center',
+    width: '200'
   },
   {
+    type: 'slot',
     label: '审核状态',
     prop: 'status',
     align: 'center',
-    render: row => {
-      if (row.status === '1') {
-        return '已发布'
-      } else if (row.status === '2') {
-        return '发布中'
-      } else if (row.status === '3') {
-        return '未发布'
-      }
-    }
+    width: '150'
+  },
+  // 这是直接使用插槽，最好使用这种，可以去设置样式或者图片
+  {
+    type: 'slot',
+    label: '操作',
+    prop: 'operating',
+    align: 'center'
   }
 ]
-
-// 列表操作事件
-const tableHandle = {
-  label: '操作',
-  width: '200',
-  options: [
-    {
-      label: '编辑',
-      code: 'cccc',
-      method: (index, row) => {
-        _this.handleEdit(index, row)
-      }
-    },
-    {
-      label: '删除',
-      code: 'gggg',
-      method: (index, row) => {
-        _this.handleDel(index, row)
-      }
-    },
-    {
-      label: '禁用',
-      code: 'jjjj',
-      method: (index, row) => {
-        _this.handleDel(index, row)
-      }
-    }
-  ]
-}
-
-export { tableHeader, tableHandle, sendThis }
+export { tableHeader, sendThis }

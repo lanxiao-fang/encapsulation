@@ -3,19 +3,40 @@
  * @Author: xiaofang lan
  * @Date: 2021-06-16 16:32:15
  * @LastEditors: xiaofang lan
- * @LastEditTime: 2021-06-17 17:58:46
+ * @LastEditTime: 2021-06-18 15:40:54
 -->
 <template>
   <div>
     <myTable
+      :url="tableUrl"
       :table-option="tableOption"
-      :table-data="tableData"
       :table-label="tableHeader"
-      :table-handle="tableHandle"
       :pagination="pagination"
-      @handleSizeChange="handleSizeChange"
-      @handleCurrentChange="handleCurrentChange"
-    ></myTable>
+      @sortChange="sortChange"
+    >
+      <!-- 具名插槽 -->
+      <template v-slot:status="{ scope }">
+        {{ scope.status == 1 ? '已发布' : scope.status == 2 ? '发布中' : '未发布' }}
+      </template>
+      <template v-slot:operating="{ scope }">
+        <div class="">
+          <el-button
+            type="primary"
+            icon="el-icon-edit"
+            circle
+            size="mini"
+            @click="handleEdit(scope)"
+          ></el-button>
+          <el-button
+            type="danger"
+            icon="el-icon-delete"
+            circle
+            size="mini"
+            @click="handleDelete(scope)"
+          ></el-button>
+        </div>
+      </template>
+    </myTable>
 
     <myForm :formData="formData" :formParams="formParams" :formConfig="formConfig"></myForm>
   </div>
@@ -24,7 +45,7 @@
 <script>
 import myTable from '@/components/my-table.vue'
 import myForm from '@/components/my-form.vue'
-import { tableHeader, tableHandle, sendThis } from './table'
+import { tableHeader, sendThis } from './table'
 
 export default {
   name: 'ArticleList',
@@ -35,11 +56,14 @@ export default {
   data() {
     return {
       tableHeader,
-      tableHandle,
       tableData: [],
       tableOption: {
-        mutiSelect: false
+        // 选择框
+        mutiSelect: true,
+        stripe: true,
+        highlightCurrentRow: true
       },
+      tableUrl: '',
       pagination: {
         current: 1,
         size: 10,
@@ -140,40 +164,23 @@ export default {
   },
   methods: {
     async getQuery() {
-      this.tableData = [
-        {
-          content: '张三',
-          gender: '男',
-          title: '张三公司',
-          email: '403505039@qq.com',
-          displayTime: '2021-06-15',
-          status: 2
-        },
-        {
-          content: '李四',
-          gender: '女',
-          title: '李四公司',
-          email: '403505038@qq.com',
-          displayTime: '2021-06-20',
-          status: 3
-        }
-      ]
+      this.tableUrl = '/api/test'
       this.pagination.total = 198
     },
-    handleEdit(index, row) {
-      console.log(row, '1')
+    // 编辑
+    handleEdit(row) {
+      console.log(row)
       this.formParams = row
     },
-    handleDel(index, row) {
-      console.log(row, '2')
+
+    // 删除
+    handleDelete(row) {
+      console.log('删除', row)
     },
-    handleSizeChange(val) {
-      this.pagination.size = val
-      this.getQuery()
-    },
-    handleCurrentChange(val) {
-      this.pagination.current = val
-      this.getQuery()
+
+    // 排序
+    sortChange(val) {
+      console.log(`如何排序：${val}`)
     }
   }
 }
