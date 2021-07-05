@@ -3,7 +3,7 @@
  * @Author: xiaofang lan
  * @Date: 2021-06-16 15:38:12
  * @LastEditors: xiaofang lan
- * @LastEditTime: 2021-06-16 16:36:19
+ * @LastEditTime: 2021-06-30 11:06:46
  */
 import Vue from 'vue'
 import VueRouter from 'vue-router'
@@ -36,6 +36,12 @@ const routes = [
     name: 'table',
     meta: { title: '登录页' },
     component: () => import('@/views/table/index')
+  },
+  {
+    path: '/transform',
+    name: 'transform',
+    meta: { title: '缩小悬浮' },
+    component: () => import('@/views/transform/index')
   }
 ]
 
