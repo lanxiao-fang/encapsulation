@@ -112,7 +112,7 @@ export default {
   watch: {
     // 监听传进来的url，变化则重新发起请求
     url: {
-      handler(val) {
+      handler() {
         this.handleInitTable()
       }
     },
@@ -190,10 +190,10 @@ export default {
 <style lang="scss">
 .table-template {
   .el-table {
-    color: #333333;
+    color: #333;
     .el-table__header-wrapper {
       .has-gutter {
-        color: #333333 !important;
+        color: #333 !important;
         tr {
           th {
             background: #fffef9;

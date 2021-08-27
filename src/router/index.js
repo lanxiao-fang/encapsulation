@@ -24,24 +24,6 @@ const routes = [
         component: () => import('@/views/home/index')
       }
     ]
-  },
-  {
-    path: '/login',
-    name: 'login',
-    meta: { title: '登录页' },
-    component: () => import('@/views/login/index')
-  },
-  {
-    path: '/table',
-    name: 'table',
-    meta: { title: '登录页' },
-    component: () => import('@/views/table/index')
-  },
-  {
-    path: '/transform',
-    name: 'transform',
-    meta: { title: '缩小悬浮' },
-    component: () => import('@/views/transform/index')
   }
 ]
 

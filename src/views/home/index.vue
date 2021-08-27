@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <h1>欢迎你，{{ info.name }}</h1>
-    <input type="button" value="退出" @click="logout" />
-  </div>
+  <div>HOME</div>
 </template>
 
 <script>
