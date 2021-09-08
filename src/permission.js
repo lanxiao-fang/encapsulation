@@ -1,9 +1,9 @@
-import axios from 'axios'
-import store from '@/store'
+// import axios from 'axios'
+// import store from '@/store'
 import router from './router'
-import { getToken } from '@/utils/auth'
+// import { getToken } from '@/utils/auth'
 
-const whiteList = ['/login', '/table', '/404', '/401']
+// const whiteList = ['/login', '/table', '/404', '/401']
 
 router.beforeEach(async (to, from, next) => {
   next()
