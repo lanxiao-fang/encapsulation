@@ -1,0 +1,11 @@
+:root {
+    --normal-font-size: 14px;
+    --big-font-size: 18px;
+    --main-background-color: #999;
+    --main-font-color: red;
+    --border-color: #fff;
+}
+* {
+    padding: 0;
+    margin: 0;
+}
