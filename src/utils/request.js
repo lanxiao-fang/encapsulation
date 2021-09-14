@@ -4,7 +4,7 @@ import { getToken } from './auth'
 import { errorStatus } from './variables'
 
 const service = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
+  baseURL: 'https://www.fastmock.site/mock/72606b76c54a549270590bb7cca1a168/api',
   // withCredentials: true,
   timeout: 10000
 })
